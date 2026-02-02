@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>projects</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <main>
+    <button class="window-close" type="button" aria-label="Close page"></button>
+<pre>Yinting (James) Chen
+
+~/PROJECTS/
+
+GUI_AGENT_DEBUGGER
+⋅ Comming soon...
+~present
+<a href="https://github.com/CyT1ng">[CODE]</a>
+
+AGENTIC_SHOPPING_ASSISTANT
+⋅ Multi-agent marketing strategy system with CrewAI
+2025.11
+<a href="https://github.com/CyT1ng/shopping_assistant_crewai">[CODE]</a>
+
+RAG_PIPELINE
+⋅ HyDE-based RAG pipeline
+2025.09
+<a href="https://github.com/CyT1ng/RAG_Project/">[CODE]</a>
+
+<a href="/">..</a>
+</pre>
+
+<div class="footer">
+  <div class="small">last updated: 2026-01-30</div>
+</div>
+  </main>
+  <script>
+    (() => {
+      const root = document.documentElement;
+      const closeBtn = document.querySelector(".window-close");
+      if (closeBtn) {
+        closeBtn.addEventListener("click", () => {
+          window.location.href = "/";
+        });
+      }
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        return;
+      }
+      const set = (x, y) => {
+        root.style.setProperty("--cursor-x", `${x}px`);
+        root.style.setProperty("--cursor-y", `${y}px`);
+      };
+      set(window.innerWidth / 2, window.innerHeight / 2);
+      window.addEventListener("pointermove", (e) => set(e.clientX, e.clientY), { passive: true });
+      window.addEventListener("pointerdown", (e) => set(e.clientX, e.clientY), { passive: true });
+      window.addEventListener(
+        "touchmove",
+        (e) => {
+          if (!e.touches || !e.touches[0]) return;
+          set(e.touches[0].clientX, e.touches[0].clientY);
+        },
+        { passive: true }
+      );
+    })();
+  </script>
+</body>
+</html>

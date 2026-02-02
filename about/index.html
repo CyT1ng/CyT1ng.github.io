@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>about</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <main>
+    <button class="window-close" type="button" aria-label="Close page"></button>
+<pre>Yinting (James) Chen
+
+~/ABOUT/
+
+I am a CS freshman at UIUC.
+I build agent systems, RAG pipelines, and developer tools.
+
+Links
+<a href="https://github.com/CyT1ng">[GITHUB]</a>  <a href="https://www.linkedin.com/in/yintingchen/">[LINKEDIN]</a>  <a href="https://scholar.google.com/">[SCHOLAR]</a>
+
+<a href="/">..</a>
+</pre>
+
+<div class="footer">
+  <div class="small">last updated: 2026-01-30</div>
+</div>
+  </main>
+  <script>
+    (() => {
+      const root = document.documentElement;
+      const closeBtn = document.querySelector(".window-close");
+      if (closeBtn) {
+        closeBtn.addEventListener("click", () => {
+          window.location.href = "/";
+        });
+      }
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        return;
+      }
+      const set = (x, y) => {
+        root.style.setProperty("--cursor-x", `${x}px`);
+        root.style.setProperty("--cursor-y", `${y}px`);
+      };
+      set(window.innerWidth / 2, window.innerHeight / 2);
+      window.addEventListener("pointermove", (e) => set(e.clientX, e.clientY), { passive: true });
+      window.addEventListener("pointerdown", (e) => set(e.clientX, e.clientY), { passive: true });
+      window.addEventListener(
+        "touchmove",
+        (e) => {
+          if (!e.touches || !e.touches[0]) return;
+          set(e.touches[0].clientX, e.touches[0].clientY);
+        },
+        { passive: true }
+      );
+    })();
+  </script>
+</body>
+</html>
