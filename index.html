@@ -28,11 +28,25 @@
     (() => {
       const root = document.documentElement;
       const closeBtn = document.querySelector(".window-close");
+      const softClose = () => {
+        document.body.classList.add("page-closed");
+      };
+      const requestClose = () => {
+        window.open("", "_self");
+        window.close();
+        setTimeout(() => {
+          if (document.visibilityState === "hidden") return;
+          const path = window.location.pathname;
+          const isHome = path === "/" || path.endsWith("/index.html");
+          if (!isHome) {
+            window.location.href = "/";
+            return;
+          }
+          softClose();
+        }, 120);
+      };
       if (closeBtn) {
-        closeBtn.addEventListener("click", () => {
-          window.open("", "_self");
-          window.close();
-        });
+        closeBtn.addEventListener("click", requestClose);
       }
       if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
         return;

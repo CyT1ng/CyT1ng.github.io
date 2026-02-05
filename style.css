@@ -5,7 +5,7 @@
   --link:#79c0ff;
   --link-hover:#a5d6ff;
   --max: 666px;
-  --frame-bg:#00000016;
+  --frame-bg:rgba(0, 0, 0, 0.5);
   --frame-border: rgba(255,255,255,0.12);
   --frame-bar:#161b22;
   --frame-shadow: 0 22px 60px rgba(0,0,0,0.45), 0 2px 8px rgba(0,0,0,0.35);
@@ -42,6 +42,7 @@ main{
   border-radius: 12px;
   box-shadow: var(--frame-shadow);
   z-index: 1;
+  transition: opacity 160ms ease, transform 160ms ease;
 }
 main::before{
   content:"";
@@ -91,11 +92,25 @@ main::before{
 .window-close:focus-visible::after{
   opacity: 1;
 }
+body.page-closed::after{
+  content: "Browser blocked closing this tab. Use Ctrl+W (Cmd+W) to close it.";
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 24px;
+  color: var(--muted);
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  z-index: 2;
+  pointer-events: none;
+}
 .page-closed main{
   opacity: 0;
   transform: scale(0.98);
   pointer-events: none;
-  transition: opacity 160ms ease, transform 160ms ease;
 }
 a{color:var(--link); text-decoration:none}
 a:hover{color:var(--link-hover); text-decoration:underline}
