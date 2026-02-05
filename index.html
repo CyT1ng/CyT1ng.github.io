@@ -28,21 +28,12 @@
     (() => {
       const root = document.documentElement;
       const closeBtn = document.querySelector(".window-close");
-      const softClose = () => {
-        document.body.classList.add("page-closed");
-      };
       const requestClose = () => {
         window.open("", "_self");
         window.close();
         setTimeout(() => {
           if (document.visibilityState === "hidden") return;
-          const path = window.location.pathname;
-          const isHome = path === "/" || path.endsWith("/index.html");
-          if (!isHome) {
-            window.location.href = "/";
-            return;
-          }
-          softClose();
+          history.back();
         }, 120);
       };
       if (closeBtn) {
