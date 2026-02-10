@@ -26,12 +26,20 @@ not found.
     (() => {
       const root = document.documentElement;
       const closeBtn = document.querySelector(".window-close");
+      const isHome = () => {
+        const path = window.location.pathname;
+        return path === "/" || path.endsWith("/index.html");
+      };
       const requestClose = () => {
+        if (!isHome()) {
+          window.location.href = "/";
+          return;
+        }
         window.open("", "_self");
         window.close();
         setTimeout(() => {
           if (document.visibilityState === "hidden") return;
-          history.back();
+          window.location.href = "/";
         }, 120);
       };
       if (closeBtn) {
