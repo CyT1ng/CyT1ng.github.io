@@ -7,8 +7,13 @@
   --max: 666px;
   --frame-bg:rgba(0, 0, 0, 0.5);
   --frame-border: rgba(255,255,255,0.12);
-  --frame-bar:#161b22;
+  --frame-bar:#161b2200;
   --frame-shadow: 0 22px 60px rgba(0,0,0,0.45), 0 2px 8px rgba(0,0,0,0.35);
+  --bg-image: url("/assets/image.png");
+  --bg-image-opacity: 1;
+  --bg-image-sat: 0.9;
+  --bg-image-contrast: 1.05;
+  --bg-image-blur: 0px;
 }
 *{box-sizing:border-box}
 html,body{height:100%}
@@ -28,9 +33,22 @@ body::before{
   position: fixed;
   inset: 0;
   pointer-events: none;
-  background: radial-gradient(300px circle at var(--cursor-x, 50vw) var(--cursor-y, 50vh), rgba(255,255,255,0.12), rgba(255,255,255,0) 60%);
-  opacity: 0.9;
+  background-image: var(--bg-image);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: var(--bg-image-opacity);
+  filter: saturate(var(--bg-image-sat)) contrast(var(--bg-image-contrast)) blur(var(--bg-image-blur));
   z-index: 0;
+}
+body::after{
+  content:"";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(300px circle at var(--cursor-x, 50vw) var(--cursor-y, 50vh), rgba(255, 255, 255, 0.3), rgba(255,255,255,0) 60%);
+  opacity: 1;
+  z-index: 1;
 }
 main{
   width: min(100%, var(--max));
@@ -41,7 +59,7 @@ main{
   border: 1px solid var(--frame-border);
   border-radius: 12px;
   box-shadow: var(--frame-shadow);
-  z-index: 1;
+  z-index: 2;
 }
 main::before{
   content:"";
